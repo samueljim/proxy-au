@@ -1,1 +1,1 @@
-proxy-au
+proxy-us

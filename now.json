@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "name": "proxy-au",
+    "public": false,
+    "alias": ["au.samueljim.com"],
+    "github": {
+        "autoAlias": true
+    },
+    "regions": ["syd1"],
+    "routes": [
+        { "src": "*", "dest": "/api" }
+    ]
+}
