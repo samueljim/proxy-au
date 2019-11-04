@@ -11,21 +11,21 @@ const asyncMiddleware = fnc =>
             .catch(next);
     };
 
-app.get('*:url', asyncMiddleware(async (req, res, next) => {
-    try {
-        (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
-    } catch (err) { next(err); }
-}));
+// app.get('*:url', asyncMiddleware(async (req, res, next) => {
+//     try {
+//         (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+//     } catch (err) { next(err); }
+// }));
 
-app.get('/:url', asyncMiddleware(async (req, res, next) => {
-    try {
-        (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
-    } catch (err) { next(err); }
-}));
+// app.get('/:url', asyncMiddleware(async (req, res, next) => {
+//     try {
+//         (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+//     } catch (err) { next(err); }
+// }));
 
 app.get('*', asyncMiddleware(async (req, res, next) => {
     try {
-        (req.query.url) ? request(req.query.url).pipe(res) : res.send('Bad url');
+        (req.query.url) ? request(req.query.url).pipe(res) : res.send('bad url please send a request (?url=https://www.google.com/)');
     } catch (err) { next(err); }
 }));
 
