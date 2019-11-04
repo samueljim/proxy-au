@@ -8,6 +8,6 @@
     },
     "regions": ["syd1"],
     "routes": [
-        { "src": "*", "dest": "/api" }
+        { "src": "/", "dest": "/api" }
     ]
 }
