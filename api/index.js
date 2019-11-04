@@ -11,7 +11,11 @@ const asyncMiddleware = fnc =>
             .catch(next);
     };
 
-app.get('*/:url', asyncMiddleware(async (req, res, next) => {
+app.get('*:url', asyncMiddleware(async (req, res, next) => {
+    (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+}));
+
+app.get('/:url', asyncMiddleware(async (req, res, next) => {
     (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
 }));
 
