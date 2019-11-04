@@ -12,21 +12,26 @@ const asyncMiddleware = fnc =>
     };
 
 app.get('*:url', asyncMiddleware(async (req, res, next) => {
-    (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+    try {
+        (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+    } catch (err) { next(err); }
 }));
 
 app.get('/:url', asyncMiddleware(async (req, res, next) => {
-    (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+    try {
+        (req.params.url) ? request(req.params.url).pipe(res) : next('No url');
+    } catch (err) { next(err); }
 }));
 
 app.get('*', asyncMiddleware(async (req, res, next) => {
-    (req.query.url) ? request(req.query.url).pipe(res) : res.send('Bad url');
+    try {
+        (req.query.url) ? request(req.query.url).pipe(res) : res.send('Bad url');
+    } catch (err) { next(err); }
 }));
 
 // if there's an error in routing then this will happen
 app.use(function (err, req, res, next) {
     res.send({'error': err});
-    // res.end();
 });
 
 module.exports = app
